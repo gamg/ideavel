@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
-                {{--for--}}
+                {{--for  --}}
                 <div class="p-6 flex space-x-2">
                     <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
