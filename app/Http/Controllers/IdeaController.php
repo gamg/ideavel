@@ -10,6 +10,19 @@ use Illuminate\View\View;
 
 class IdeaController extends Controller
 {
+    private array $rules = [
+        'title' => 'required|string|max:100',
+        'description' => 'required|string|max:300',
+    ];
+
+    private array $errorMessages = [
+        'title.required' => 'El campo título es obligarorio.',
+        'description.required' => 'El campo descripción es obligarorio.',
+        'string' => 'Este campo debe ser de tipo String.',
+        'title.max' => 'El campo título no debe ser mayor a :max caracteres.',
+        'description.max' => 'El campo descripción no debe ser mayor a :max caracteres.',
+    ];
+
     public function index(): View
     {
         $ideas = Idea::get(); // select * from ideas
@@ -24,10 +37,7 @@ class IdeaController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:100',
-            'description' => 'required|string|max:300',
-        ]);
+        $validated = $request->validate($this->rules, $this->errorMessages);
 
         Idea::create([
             'user_id' => auth()->user()->id, //$request->user()->id
@@ -47,10 +57,7 @@ class IdeaController extends Controller
 
     public function update(Request $request, Idea $idea): RedirectResponse
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:100',
-            'description' => 'required|string|max:300',
-        ]);
+        $validated = $request->validate($this->rules, $this->errorMessages);
 
         $idea->update($validated);
 
