@@ -3,8 +3,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 <div class="p-6 text-gray-900 dark:text-gray-100s space-x-8">
-                    <a href="#" class="px-4 py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-sm text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700">{{ __('Agregar') }}</a>
-                    <a href="#" class="px-4 py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-sm text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700">{{ __('Las Mejores') }}</a>
+                    <a href="{{ route('idea.create') }}" class="px-4 py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-sm text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700">Agregar</a>
+                    <a href="#" class="px-4 py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-sm text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700">Las Mejores</a>
                 </div>
             </div>
             <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
@@ -21,8 +21,8 @@
                     <div class="flex-1 pl-3">
                         <div class="flex justify-between items-center">
                             <div>
-                                <span class="text-gray-800 dark:text-gray-100">{{ $idea->user()->name }}</span>
-                                <small class="ml-2 text-sm text-gray-600 dark:text-gray-100">{{ $idea->created_at }}</small>
+                                <span class="text-gray-800 dark:text-gray-100">{{ $idea->user->name }}</span>
+                                <small class="ml-2 text-sm text-gray-600 dark:text-gray-100">{{ $idea->created_at->format('d/m/Y') }}</small>
                                 @unless($idea->created_at->eq($idea->updated_at))
                                     <small class="text-sm text-gray-400"> &middot; Editado</small>
                                 @endunless
