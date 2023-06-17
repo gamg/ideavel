@@ -37,7 +37,7 @@
                                         </button>
                                     </x-slot>
                                     <x-slot name="content">
-                                        <x-dropdown-link :href="$myroute='zzz'">
+                                        <x-dropdown-link :href="route('idea.show', $idea)">
                                             Ver
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('idea.edit', $idea)">
