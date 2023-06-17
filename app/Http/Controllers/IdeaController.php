@@ -59,4 +59,11 @@ class IdeaController extends Controller
     {
         return view('ideas.show')->with('idea', $idea);
     }
+
+    public function delete(Idea $idea): RedirectResponse
+    {
+        $idea->delete();
+
+        return redirect()->route('idea.index');
+    }
 }
