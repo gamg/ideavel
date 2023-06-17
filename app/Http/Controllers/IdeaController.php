@@ -79,4 +79,13 @@ class IdeaController extends Controller
 
         return redirect()->route('idea.index');
     }
+
+    public function synchronizeLikes(Request $request, Idea $idea): RedirectResponse
+    {
+        $request->user()->ideasLiked()->toggle([$idea->id]);
+
+        $idea->update(['likes' => $idea->users()->count()]);
+
+        return redirect()->route('idea.show', $idea);
+    }
 }
