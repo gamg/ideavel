@@ -42,4 +42,16 @@ class IdeaController extends Controller
     {
         return view('ideas.create_or_edit')->with('idea', $idea);
     }
+
+    public function update(Request $request, Idea $idea): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:100',
+            'description' => 'required|string|max:300',
+        ]);
+
+        $idea->update($validated);
+
+        return redirect(route('idea.index'));
+    }
 }
