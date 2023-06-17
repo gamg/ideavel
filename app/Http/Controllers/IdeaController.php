@@ -14,12 +14,12 @@ class IdeaController extends Controller
     {
         $ideas = Idea::get(); // select * from ideas
 
-        return view('ideas.index',['ideas' => $ideas]);
+        return view('ideas.index', ['ideas' => $ideas]);
     }
 
     public function create(): View
     {
-        return view('ideas.create');
+        return view('ideas.create_or_edit');
     }
 
     public function store(Request $request): RedirectResponse
@@ -36,5 +36,10 @@ class IdeaController extends Controller
         ]);
 
         return redirect()->route('idea.index');
+    }
+
+    public function edit(Idea $idea): View
+    {
+        return view('ideas.create_or_edit')->with('idea', $idea);
     }
 }
