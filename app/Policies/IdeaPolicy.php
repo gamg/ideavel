@@ -64,4 +64,12 @@ class IdeaPolicy
     {
         //
     }
+
+    /**
+     * Determine whether the user can update the likes field.
+     */
+    public function updateLikes(User $user, Idea $idea): bool
+    {
+        return $idea->user()->isNot($user);
+    }
 }
