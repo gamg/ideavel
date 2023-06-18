@@ -38,4 +38,4 @@ Route::get('/ideas/editar/{idea}', [IdeaController::class, 'edit'])->name('idea.
 Route::put('/ideas/actualizar/{idea}', [IdeaController::class, 'update'])->name('idea.update');
 Route::get('/ideas/{idea}', [IdeaController::class, 'show'])->name('idea.show');
 Route::delete('/ideas/{idea}', [IdeaController::class, 'delete'])->name('idea.delete');
-Route::put('/ideas/{idea}', [IdeaController::class, 'synchronizeLikes'])->name('idea.delete');
+Route::put('/ideas/{idea}', [IdeaController::class, 'synchronizeLikes'])->name('idea.like');
