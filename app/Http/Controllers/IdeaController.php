@@ -23,9 +23,9 @@ class IdeaController extends Controller
         'description.max' => 'El campo descripción no debe ser mayor a :max caracteres.',
     ];
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $ideas = Idea::get(); // select * from ideas
+        $ideas = Idea::myIdeas($request->filtro)->theBest($request->filtro)->get(); // select * from ideas
 
         return view('ideas.index', ['ideas' => $ideas]);
     }
